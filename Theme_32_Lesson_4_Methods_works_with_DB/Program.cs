@@ -1,4 +1,6 @@
-﻿namespace Theme_32_Lesson_4_Methods_works_with_DB
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace Theme_32_Lesson_4_Methods_works_with_DB
 {
     internal class Program
     {
@@ -39,20 +41,71 @@
 
             // 2. Получение данных из БД
 
+            //using (ApplicationContext context = new ApplicationContext())
+            //{
+            //    List<Person> students = context.People.ToList();
+
+            //    foreach(var item in students)
+            //    {
+            //        Console.WriteLine(item.Name);
+            //    }
+            //}
+
+            // 3. Удаление данных из БД
+
+            //using (ApplicationContext context = new ApplicationContext())
+            //{
+            //    Person currentStudent = context.People.FirstOrDefault()!;
+
+            //    if (currentStudent != null)
+            //    {
+            //        context.People.Remove(currentStudent);
+            //        context.SaveChanges();
+            //    }
+
+            //}
+
+
+            // 4. Изменение БД
+
+            //using (ApplicationContext context = new ApplicationContext())
+            //{
+            //    Person student = context.People.FirstOrDefault()!;
+
+            //    if (student != null)
+            //    {
+            //        student.Age = 27;
+            //        student.Name = "Bellatrix";
+
+            //        context.People.Update(student);
+
+            //        context.SaveChanges();
+            //    }
+            //}
+
+
+            // 5. Использование асинхронных методов
+
             using (ApplicationContext context = new ApplicationContext())
             {
-                List<Person> students = context.People.ToList();
-
-                foreach(var item in students)
+                for (int i = 0; i < 10; i++)
                 {
-                    Console.WriteLine(item.Name);
+                    Console.WriteLine(i);
+                    Thread.Sleep(100);
+
+                    if (i == 5)
+                    {
+                        Task.Run(async () =>
+                        {
+                            int adultCount;
+
+                            adultCount = await context.People.CountAsync(person => person.Age > 20);
+                            Console.WriteLine($"Взрослых студентов - {adultCount}.");
+                        });
+                    }
                 }
             }
 
-
-
-
-             
         }
     }
 }
