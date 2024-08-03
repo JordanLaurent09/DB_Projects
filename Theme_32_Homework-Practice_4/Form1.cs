@@ -1,4 +1,5 @@
 using System.Net;
+using System.Windows.Forms.VisualStyles;
 
 namespace Theme_32_Homework_Practice_4
 {
@@ -36,7 +37,7 @@ namespace Theme_32_Homework_Practice_4
 
             Task.Run(() =>
             {
-                while(true)
+                while (true)
                 {
                     Task.Delay(1000).Wait();
                     count++;
@@ -45,6 +46,48 @@ namespace Theme_32_Homework_Practice_4
             });
         }
 
-   
+        private void survivedBTN_Click(object sender, EventArgs e)
+        {
+            using (ApplicationContext context = new ApplicationContext())
+            {
+                passengers = context.Passengers.Where(passenger => passenger.Survived == 1).ToList();
+                passengersDGV.DataSource = passengers;
+            }
+        }
+
+        private void adultBTN_Click(object sender, EventArgs e)
+        {
+            using (ApplicationContext context = new ApplicationContext())
+            {
+
+                passengers = context.Passengers.ToList();
+
+                for (int i = 0; i < passengers.Count; i++)
+                {
+                    if (passengers[i].Age.Contains('.'))
+                    {
+                        passengers[i].Age = passengers[i].Age.Replace('.', ',');
+                    }
+
+                    if (passengers[i].Age + "1" == "1") 
+                    {
+                        passengers[i].Age = "10";
+
+                    }
+
+                    if (double.Parse(passengers[i].Age) < 18)
+                    {
+                        passengers[i].Age = "0";
+                    }
+                }
+
+                passengersDGV.DataSource = passengers;
+            }
+        }
+
+        private void thirdClassBTN_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

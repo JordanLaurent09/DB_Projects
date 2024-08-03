@@ -30,6 +30,9 @@
         {
             timeLB = new Label();
             passengersDGV = new DataGridView();
+            survivedBTN = new Button();
+            adultBTN = new Button();
+            thirdClassBTN = new Button();
             ((System.ComponentModel.ISupportInitialize)passengersDGV).BeginInit();
             SuspendLayout();
             // 
@@ -50,11 +53,44 @@
             passengersDGV.Size = new Size(741, 313);
             passengersDGV.TabIndex = 1;
             // 
+            // survivedBTN
+            // 
+            survivedBTN.Location = new Point(339, 397);
+            survivedBTN.Name = "survivedBTN";
+            survivedBTN.Size = new Size(184, 23);
+            survivedBTN.TabIndex = 2;
+            survivedBTN.Text = "Выжившие";
+            survivedBTN.UseVisualStyleBackColor = true;
+            survivedBTN.Click += survivedBTN_Click;
+            // 
+            // adultBTN
+            // 
+            adultBTN.Location = new Point(339, 435);
+            adultBTN.Name = "adultBTN";
+            adultBTN.Size = new Size(184, 23);
+            adultBTN.TabIndex = 3;
+            adultBTN.Text = "Совершеннолетние";
+            adultBTN.UseVisualStyleBackColor = true;
+            adultBTN.Click += adultBTN_Click;
+            // 
+            // thirdClassBTN
+            // 
+            thirdClassBTN.Location = new Point(339, 473);
+            thirdClassBTN.Name = "thirdClassBTN";
+            thirdClassBTN.Size = new Size(184, 23);
+            thirdClassBTN.TabIndex = 4;
+            thirdClassBTN.Text = "Пассажиры третьего класса";
+            thirdClassBTN.UseVisualStyleBackColor = true;
+            thirdClassBTN.Click += thirdClassBTN_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1028, 565);
+            Controls.Add(thirdClassBTN);
+            Controls.Add(adultBTN);
+            Controls.Add(survivedBTN);
             Controls.Add(passengersDGV);
             Controls.Add(timeLB);
             Name = "Form1";
@@ -68,5 +104,8 @@
 
         private Label timeLB;
         private DataGridView passengersDGV;
+        private Button survivedBTN;
+        private Button adultBTN;
+        private Button thirdClassBTN;
     }
 }
