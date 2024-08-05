@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Theme_32_Homework-Practice_
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Theme_34_Lesson_1_Create_DB_Model", "Theme_34_Lesson_1_Create_DB_Model\Theme_34_Lesson_1_Create_DB_Model.csproj", "{B24F71B8-4294-43F0-96FF-09DF5FCBF055}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Theme_34_Homework_2", "Theme_34_Homework_2\Theme_34_Homework_2.csproj", "{D8A51035-C248-4EA3-9D61-355443B57BB5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{B24F71B8-4294-43F0-96FF-09DF5FCBF055}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B24F71B8-4294-43F0-96FF-09DF5FCBF055}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B24F71B8-4294-43F0-96FF-09DF5FCBF055}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8A51035-C248-4EA3-9D61-355443B57BB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8A51035-C248-4EA3-9D61-355443B57BB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8A51035-C248-4EA3-9D61-355443B57BB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8A51035-C248-4EA3-9D61-355443B57BB5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
