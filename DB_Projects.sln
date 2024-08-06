@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Theme_34_Lesson_1_Create_DB
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Theme_34_Homework_2", "Theme_34_Homework_2\Theme_34_Homework_2.csproj", "{D8A51035-C248-4EA3-9D61-355443B57BB5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Theme_34_Lesson_3_Connection_String_Configuration", "Theme_34_Lesson_3_Connection_String_Configuration\Theme_34_Lesson_3_Connection_String_Configuration.csproj", "{7237DB94-9E54-4C62-9CBA-4DF8B0E391C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Theme_34_Lesson_3_Connection_String_Configuration", "Theme_34_Lesson_3_Connection_String_Configuration\Theme_34_Lesson_3_Connection_String_Configuration.csproj", "{7237DB94-9E54-4C62-9CBA-4DF8B0E391C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Theme_34_Homework_3", "Theme_34_Homework_3\Theme_34_Homework_3.csproj", "{703124E3-4A17-4862-AFB8-7024B34ADAD1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{7237DB94-9E54-4C62-9CBA-4DF8B0E391C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7237DB94-9E54-4C62-9CBA-4DF8B0E391C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7237DB94-9E54-4C62-9CBA-4DF8B0E391C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{703124E3-4A17-4862-AFB8-7024B34ADAD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{703124E3-4A17-4862-AFB8-7024B34ADAD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{703124E3-4A17-4862-AFB8-7024B34ADAD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{703124E3-4A17-4862-AFB8-7024B34ADAD1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
