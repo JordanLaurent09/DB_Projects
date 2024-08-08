@@ -21,11 +21,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Theme_34_Homework_2", "Them
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Theme_34_Lesson_3_Connection_String_Configuration", "Theme_34_Lesson_3_Connection_String_Configuration\Theme_34_Lesson_3_Connection_String_Configuration.csproj", "{7237DB94-9E54-4C62-9CBA-4DF8B0E391C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Theme_34_Homework_3", "Theme_34_Homework_3\Theme_34_Homework_3.csproj", "{703124E3-4A17-4862-AFB8-7024B34ADAD1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Theme_34_Homework_3", "Theme_34_Homework_3\Theme_34_Homework_3.csproj", "{703124E3-4A17-4862-AFB8-7024B34ADAD1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Theme_34_Lesson_4_Logging", "Theme_34_Lesson_4_Logging\Theme_34_Lesson_4_Logging.csproj", "{DA1E9069-14B6-4447-8293-4A6351C5FD93}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Theme_34_Lesson_4_Logging", "Theme_34_Lesson_4_Logging\Theme_34_Lesson_4_Logging.csproj", "{DA1E9069-14B6-4447-8293-4A6351C5FD93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Theme_34_Homework_4", "Theme_34_Homework_4\Theme_34_Homework_4.csproj", "{B1EDB1FE-BFAA-414C-A5CC-3AC2F6E0A239}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Theme_34_Homework_4", "Theme_34_Homework_4\Theme_34_Homework_4.csproj", "{B1EDB1FE-BFAA-414C-A5CC-3AC2F6E0A239}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Theme_34_Lesson_5_Fields_Properties_Keys", "Theme_34_Lesson_5_Fields_Properties_Keys\Theme_34_Lesson_5_Fields_Properties_Keys.csproj", "{07FEAB46-AEAC-4242-A28E-89F585779C23}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +83,10 @@ Global
 		{B1EDB1FE-BFAA-414C-A5CC-3AC2F6E0A239}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1EDB1FE-BFAA-414C-A5CC-3AC2F6E0A239}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1EDB1FE-BFAA-414C-A5CC-3AC2F6E0A239}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07FEAB46-AEAC-4242-A28E-89F585779C23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07FEAB46-AEAC-4242-A28E-89F585779C23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07FEAB46-AEAC-4242-A28E-89F585779C23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07FEAB46-AEAC-4242-A28E-89F585779C23}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
