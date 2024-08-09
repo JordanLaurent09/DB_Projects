@@ -27,5 +27,10 @@ namespace Theme_34_Lesson_6_CRUD
             LastName = lastName;
             Age = age;
         }
+
+        public string Display()
+        {
+            return $"Id студента: {Id} имя студента: {FirstName} фамилия студента: {LastName} возраст студента: {Age}";
+        }
     }
 }

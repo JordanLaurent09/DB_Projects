@@ -12,15 +12,14 @@ namespace Theme_34_Lesson_6_CRUD
         public DbSet<Student> Students { get; set; } = null!;
 
         public SchoolDbContext() 
-        {
-            Database.EnsureDeleted();
+        {          
             Database.EnsureCreated();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var version = new MySqlServerVersion(new Version(8, 0, 25));
-            optionsBuilder.UseMySql("server:192.168.0.13;database=WorkDatabase;user=student-cifra;password=000000", version);
+            optionsBuilder.UseMySql("server=192.168.0.13;database=WorkDatabase;user=student-cifra;password=000000", version);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
