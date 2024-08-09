@@ -62,12 +62,44 @@ namespace Theme_34_Lesson_6_CRUD
             return foundStudents;
         }
 
+        /// <summary>
+        /// Method for update student info
+        /// </summary>
+        /// <param name="student"></param>
         public void Update(Student student)
         {
             using (SchoolDbContext schoolContext = new SchoolDbContext())
             {
-                schoolContext.Students.Update(student);
-                schoolContext.SaveChanges();
+                if (student != null)
+                {
+                    schoolContext.Students.Update(student);
+                    schoolContext.SaveChanges();
+                }
+                else
+                {
+                    MessageBox.Show("Попытка обновить данные пустой ссылкой");
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// Method allowing to remove students from database
+        /// </summary>
+        /// <param name="student"></param>
+        public void Delete(Student student)
+        {
+            using (SchoolDbContext schoolContext = new SchoolDbContext())
+            {
+                if (student != null)
+                {
+                    schoolContext.Students.Remove(student);
+                    schoolContext.SaveChanges();
+                }
+                else
+                {
+                    MessageBox.Show("Попытка удалить несуществующего студента.");
+                }
             }
         }
     }

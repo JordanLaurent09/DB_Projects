@@ -53,6 +53,9 @@
             label10 = new Label();
             label11 = new Label();
             updateDataBTN = new Button();
+            label12 = new Label();
+            label13 = new Label();
+            removeStudentBTN = new Button();
             SuspendLayout();
             // 
             // newNameTB
@@ -275,11 +278,43 @@
             updateDataBTN.UseVisualStyleBackColor = true;
             updateDataBTN.Click += updateDataBTN_Click;
             // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(929, 340);
+            label12.Name = "label12";
+            label12.Size = new Size(180, 15);
+            label12.TabIndex = 25;
+            label12.Text = "Удаление выбранного студента";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new Point(708, 380);
+            label13.Name = "label13";
+            label13.RightToLeft = RightToLeft.No;
+            label13.Size = new Size(666, 15);
+            label13.TabIndex = 26;
+            label13.Text = "Внимание! Для удаления студента из базы данных выберите его из списка, а затем нажмите кнопку \"Удалить студента\".";
+            // 
+            // removeStudentBTN
+            // 
+            removeStudentBTN.Location = new Point(973, 420);
+            removeStudentBTN.Name = "removeStudentBTN";
+            removeStudentBTN.Size = new Size(117, 23);
+            removeStudentBTN.TabIndex = 27;
+            removeStudentBTN.Text = "Удалить студента";
+            removeStudentBTN.UseVisualStyleBackColor = true;
+            removeStudentBTN.Click += removeStudentBTN_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1426, 809);
+            Controls.Add(removeStudentBTN);
+            Controls.Add(label13);
+            Controls.Add(label12);
             Controls.Add(updateDataBTN);
             Controls.Add(label11);
             Controls.Add(label10);
@@ -338,5 +373,8 @@
         private Label label10;
         private Label label11;
         private Button updateDataBTN;
+        private Label label12;
+        private Label label13;
+        private Button removeStudentBTN;
     }
 }

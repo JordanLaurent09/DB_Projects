@@ -117,11 +117,18 @@ namespace Theme_34_Lesson_6_CRUD
         /// </summary>
         public void UpdateStudentData()
         {
-            Student updatingStudent = new Student() {Id = _entityIndex, FirstName = currentNameTB.Text, LastName = currentSurnameTB.Text, Age = int.Parse(currentAgeTB.Text) };
+            if (currentNameTB.Text.Length > 0 && currentSurnameTB.Text.Length > 0 && currentAgeTB.Text.Length > 0)
+            {
+                Student updatingStudent = new Student() { Id = _entityIndex, FirstName = currentNameTB.Text, LastName = currentSurnameTB.Text, Age = int.Parse(currentAgeTB.Text) };
 
-            _operator.Update(updatingStudent);
+                _operator.Update(updatingStudent);
 
-            ReadAllStudents();
+                ReadAllStudents();
+            }
+            else
+            {
+                MessageBox.Show("Пожалуйста, заполните все поля.");
+            }
         }
 
         private void updateDataBTN_Click(object sender, EventArgs e)
@@ -150,6 +157,32 @@ namespace Theme_34_Lesson_6_CRUD
         private void studentsInfoLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             ChooseStudent();
+        }
+
+
+        /// <summary>
+        /// Начальный метод по удалению выбранного пользователя
+        /// </summary>
+        private void RemoveStudent()
+        {
+            if (currentNameTB.Text.Length > 0 && currentSurnameTB.Text.Length > 0 && currentAgeTB.Text.Length > 0)
+            {
+                Student updatingStudent = new Student() { Id = _entityIndex, FirstName = currentNameTB.Text, LastName = currentSurnameTB.Text, Age = int.Parse(currentAgeTB.Text) };
+
+                _operator.Delete(updatingStudent);
+
+                ReadAllStudents();
+            }
+            else
+            {
+                MessageBox.Show("Пожалуйста, заполните все поля.");
+            }
+        }
+
+
+        private void removeStudentBTN_Click(object sender, EventArgs e)
+        {
+            RemoveStudent();
         }
     }
 }

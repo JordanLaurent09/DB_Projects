@@ -12,6 +12,6 @@ namespace Theme_34_Lesson_6_CRUD
         public List<Student> Read();
         public List<Student> Find(string searchText, string searchOption);
         public void Update(Student student);
-        /*public void Delete();*/
+        public void Delete(Student student);
     }
 }
