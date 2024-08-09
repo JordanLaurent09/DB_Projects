@@ -61,5 +61,14 @@ namespace Theme_34_Lesson_6_CRUD
             }
             return foundStudents;
         }
+
+        public void Update(Student student)
+        {
+            using (SchoolDbContext schoolContext = new SchoolDbContext())
+            {
+                schoolContext.Students.Update(student);
+                schoolContext.SaveChanges();
+            }
+        }
     }
 }

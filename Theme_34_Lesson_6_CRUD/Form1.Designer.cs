@@ -45,6 +45,14 @@
             nameRB = new RadioButton();
             surnameRB = new RadioButton();
             searchBTN = new Button();
+            label8 = new Label();
+            currentNameTB = new TextBox();
+            currentSurnameTB = new TextBox();
+            currentAgeTB = new TextBox();
+            label9 = new Label();
+            label10 = new Label();
+            label11 = new Label();
+            updateDataBTN = new Button();
             SuspendLayout();
             // 
             // newNameTB
@@ -122,6 +130,7 @@
             studentsInfoLB.Name = "studentsInfoLB";
             studentsInfoLB.Size = new Size(454, 274);
             studentsInfoLB.TabIndex = 8;
+            studentsInfoLB.SelectedIndexChanged += studentsInfoLB_SelectedIndexChanged;
             // 
             // label5
             // 
@@ -199,11 +208,86 @@
             searchBTN.UseVisualStyleBackColor = true;
             searchBTN.Click += searchBTN_Click;
             // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(946, 141);
+            label8.Name = "label8";
+            label8.Size = new Size(163, 15);
+            label8.TabIndex = 17;
+            label8.Text = "Изменение данных студента";
+            // 
+            // currentNameTB
+            // 
+            currentNameTB.Location = new Point(888, 187);
+            currentNameTB.Name = "currentNameTB";
+            currentNameTB.Size = new Size(100, 23);
+            currentNameTB.TabIndex = 18;
+            // 
+            // currentSurnameTB
+            // 
+            currentSurnameTB.Location = new Point(1009, 187);
+            currentSurnameTB.Name = "currentSurnameTB";
+            currentSurnameTB.Size = new Size(100, 23);
+            currentSurnameTB.TabIndex = 19;
+            // 
+            // currentAgeTB
+            // 
+            currentAgeTB.Location = new Point(1130, 187);
+            currentAgeTB.Name = "currentAgeTB";
+            currentAgeTB.Size = new Size(53, 23);
+            currentAgeTB.TabIndex = 20;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(918, 166);
+            label9.Name = "label9";
+            label9.Size = new Size(34, 15);
+            label9.TabIndex = 21;
+            label9.Text = "Имя:";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(1029, 166);
+            label10.Name = "label10";
+            label10.Size = new Size(61, 15);
+            label10.TabIndex = 22;
+            label10.Text = "Фамилия:";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(1130, 166);
+            label11.Name = "label11";
+            label11.Size = new Size(53, 15);
+            label11.TabIndex = 23;
+            label11.Text = "Возраст:";
+            // 
+            // updateDataBTN
+            // 
+            updateDataBTN.Location = new Point(959, 232);
+            updateDataBTN.Name = "updateDataBTN";
+            updateDataBTN.Size = new Size(150, 23);
+            updateDataBTN.TabIndex = 24;
+            updateDataBTN.Text = "Редактировать данные";
+            updateDataBTN.UseVisualStyleBackColor = true;
+            updateDataBTN.Click += updateDataBTN_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1426, 809);
+            Controls.Add(updateDataBTN);
+            Controls.Add(label11);
+            Controls.Add(label10);
+            Controls.Add(label9);
+            Controls.Add(currentAgeTB);
+            Controls.Add(currentSurnameTB);
+            Controls.Add(currentNameTB);
+            Controls.Add(label8);
             Controls.Add(searchBTN);
             Controls.Add(surnameRB);
             Controls.Add(nameRB);
@@ -246,5 +330,13 @@
         private RadioButton nameRB;
         private RadioButton surnameRB;
         private Button searchBTN;
+        private Label label8;
+        private TextBox currentNameTB;
+        private TextBox currentSurnameTB;
+        private TextBox currentAgeTB;
+        private Label label9;
+        private Label label10;
+        private Label label11;
+        private Button updateDataBTN;
     }
 }

@@ -30,7 +30,7 @@ namespace Theme_34_Lesson_6_CRUD
 
         public string Display()
         {
-            return $"Id студента: {Id} имя студента: {FirstName} фамилия студента: {LastName} возраст студента: {Age}";
+            return $"Id: {Id}; имя: {FirstName}; фамилия: {LastName}; возраст: {Age}";
         }
     }
 }
