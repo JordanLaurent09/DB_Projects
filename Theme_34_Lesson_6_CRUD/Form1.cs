@@ -20,9 +20,9 @@ namespace Theme_34_Lesson_6_CRUD
 
                 _operator.Add(newStudent);
 
-                newNameTB.Text = String.Empty;
-                newSurnameTB.Text = String.Empty;
-                newAgeTB.Text = String.Empty;
+                newNameTB.Text = string.Empty;
+                newSurnameTB.Text = string.Empty;
+                newAgeTB.Text = string.Empty;
 
             }
             else
@@ -35,7 +35,9 @@ namespace Theme_34_Lesson_6_CRUD
             AddNewStudent();
         }
 
-
+        /// <summary>
+        /// Метод по чтению всех студентов из БД
+        /// </summary>
         private void ReadAllStudents()
         {
             studentsInfoLB.Items.Clear();
@@ -52,6 +54,57 @@ namespace Theme_34_Lesson_6_CRUD
         private void showAllDataBTN_Click(object sender, EventArgs e)
         {
             ReadAllStudents();
+        }
+
+
+        private void SearchStudents()
+        {
+            if (searchTB.Text.Length > 0)
+            {
+
+                string searchProperty = string.Empty;
+
+                if (nameRB.Checked == true)
+                {
+                    searchProperty = "name";
+                }
+                else if (surnameRB.Checked == true)
+                {
+                    searchProperty = "surname";
+                }
+                else
+                {
+                    MessageBox.Show("Внимание! Радиокнопки неактивны! Дальнейшая работа запрещена!");
+                    return;
+                }
+
+                List<Student> students = _operator.Find(searchTB.Text, searchProperty);
+
+                if (students.Count == 0)
+                {
+                    MessageBox.Show("По введенным данным ничего не найдено! Проверьте правильность информации");
+                    return;
+                }
+
+                studentsInfoLB.Items.Clear();
+
+                foreach (Student student in students)
+                {
+                    studentsInfoLB.Items.Add(student.Display());
+                }
+
+            }
+
+            else
+            {
+                MessageBox.Show("Заполните форму.");
+            }
+            
+        }
+
+        private void searchBTN_Click(object sender, EventArgs e)
+        {
+            SearchStudents();
         }
     }
 }

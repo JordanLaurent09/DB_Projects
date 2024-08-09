@@ -36,5 +36,30 @@ namespace Theme_34_Lesson_6_CRUD
 
             return allStudents;
         }
+
+        /// <summary>
+        /// Seeks all data in database based on search values
+        /// </summary>
+        /// <param name="searchText"></param>
+        /// <param name="searchOption"></param>
+        /// <returns></returns>
+        public List<Student> Find(string searchText, string searchOption)
+        {
+            List<Student> foundStudents = new List<Student>();
+
+            using (SchoolDbContext schoolContext = new SchoolDbContext())
+            {
+                switch (searchOption) 
+                {
+                    case "name":
+                        foundStudents = schoolContext.Students.Where(user => user.FirstName == searchText).ToList();
+                        break;
+                    case "surname":
+                        foundStudents = schoolContext.Students.Where(user => user.LastName == searchText).ToList();
+                        break;
+                }
+            }
+            return foundStudents;
+        }
     }
 }

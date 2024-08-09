@@ -10,8 +10,8 @@ namespace Theme_34_Lesson_6_CRUD
     {
         public void Add(Student newStudent);
         public List<Student> Read();
-        /*public void Find();
-        public void Update();
+        public List<Student> Find(string searchText, string searchOption);
+        /*public void Update();
         public void Delete();*/
     }
 }

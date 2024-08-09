@@ -39,6 +39,12 @@
             studentsInfoLB = new ListBox();
             label5 = new Label();
             showAllDataBTN = new Button();
+            searchTB = new TextBox();
+            label6 = new Label();
+            label7 = new Label();
+            nameRB = new RadioButton();
+            surnameRB = new RadioButton();
+            searchBTN = new Button();
             SuspendLayout();
             // 
             // newNameTB
@@ -112,15 +118,15 @@
             // 
             studentsInfoLB.FormattingEnabled = true;
             studentsInfoLB.ItemHeight = 15;
-            studentsInfoLB.Location = new Point(608, 72);
+            studentsInfoLB.Location = new Point(309, 41);
             studentsInfoLB.Name = "studentsInfoLB";
-            studentsInfoLB.Size = new Size(296, 274);
+            studentsInfoLB.Size = new Size(454, 274);
             studentsInfoLB.TabIndex = 8;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(650, 9);
+            label5.Location = new Point(425, 9);
             label5.Name = "label5";
             label5.Size = new Size(206, 15);
             label5.TabIndex = 9;
@@ -128,7 +134,7 @@
             // 
             // showAllDataBTN
             // 
-            showAllDataBTN.Location = new Point(659, 369);
+            showAllDataBTN.Location = new Point(435, 321);
             showAllDataBTN.Name = "showAllDataBTN";
             showAllDataBTN.Size = new Size(187, 23);
             showAllDataBTN.TabIndex = 10;
@@ -136,11 +142,74 @@
             showAllDataBTN.UseVisualStyleBackColor = true;
             showAllDataBTN.Click += showAllDataBTN_Click;
             // 
+            // searchTB
+            // 
+            searchTB.Location = new Point(888, 59);
+            searchTB.Name = "searchTB";
+            searchTB.Size = new Size(160, 23);
+            searchTB.TabIndex = 11;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(888, 41);
+            label6.Name = "label6";
+            label6.Size = new Size(160, 15);
+            label6.TabIndex = 12;
+            label6.Text = "Введите имя или фамилию:";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(912, 9);
+            label7.Name = "label7";
+            label7.Size = new Size(208, 15);
+            label7.TabIndex = 13;
+            label7.Text = "Поиск студента по имени /фамилии";
+            // 
+            // nameRB
+            // 
+            nameRB.AutoSize = true;
+            nameRB.Location = new Point(888, 88);
+            nameRB.Name = "nameRB";
+            nameRB.Size = new Size(49, 19);
+            nameRB.TabIndex = 14;
+            nameRB.TabStop = true;
+            nameRB.Text = "Имя";
+            nameRB.UseVisualStyleBackColor = true;
+            // 
+            // surnameRB
+            // 
+            surnameRB.AutoSize = true;
+            surnameRB.Location = new Point(995, 88);
+            surnameRB.Name = "surnameRB";
+            surnameRB.Size = new Size(76, 19);
+            surnameRB.TabIndex = 15;
+            surnameRB.TabStop = true;
+            surnameRB.Text = "Фамилия";
+            surnameRB.UseVisualStyleBackColor = true;
+            // 
+            // searchBTN
+            // 
+            searchBTN.Location = new Point(1089, 59);
+            searchBTN.Name = "searchBTN";
+            searchBTN.Size = new Size(75, 23);
+            searchBTN.TabIndex = 16;
+            searchBTN.Text = "Поиск";
+            searchBTN.UseVisualStyleBackColor = true;
+            searchBTN.Click += searchBTN_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1348, 659);
+            ClientSize = new Size(1426, 809);
+            Controls.Add(searchBTN);
+            Controls.Add(surnameRB);
+            Controls.Add(nameRB);
+            Controls.Add(label7);
+            Controls.Add(label6);
+            Controls.Add(searchTB);
             Controls.Add(showAllDataBTN);
             Controls.Add(label5);
             Controls.Add(studentsInfoLB);
@@ -171,5 +240,11 @@
         private ListBox studentsInfoLB;
         private Label label5;
         private Button showAllDataBTN;
+        private TextBox searchTB;
+        private Label label6;
+        private Label label7;
+        private RadioButton nameRB;
+        private RadioButton surnameRB;
+        private Button searchBTN;
     }
 }
