@@ -57,6 +57,7 @@
             label13 = new Label();
             removeStudentBTN = new Button();
             allowUpdateChB = new CheckBox();
+            reserveCopyBTN = new Button();
             SuspendLayout();
             // 
             // newNameTB
@@ -319,11 +320,22 @@
             allowUpdateChB.UseVisualStyleBackColor = true;
             allowUpdateChB.CheckedChanged += allowUpdateChB_CheckedChanged;
             // 
+            // reserveCopyBTN
+            // 
+            reserveCopyBTN.Location = new Point(435, 359);
+            reserveCopyBTN.Name = "reserveCopyBTN";
+            reserveCopyBTN.Size = new Size(187, 23);
+            reserveCopyBTN.TabIndex = 29;
+            reserveCopyBTN.Text = "Создать резервную копию БД";
+            reserveCopyBTN.UseVisualStyleBackColor = true;
+            reserveCopyBTN.Click += reserveCopyBTN_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1426, 809);
+            Controls.Add(reserveCopyBTN);
             Controls.Add(allowUpdateChB);
             Controls.Add(removeStudentBTN);
             Controls.Add(label13);
@@ -390,5 +402,6 @@
         private Label label13;
         private Button removeStudentBTN;
         private CheckBox allowUpdateChB;
+        private Button reserveCopyBTN;
     }
 }

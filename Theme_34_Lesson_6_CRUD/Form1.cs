@@ -61,6 +61,8 @@ namespace Theme_34_Lesson_6_CRUD
             {
                 studentsInfoLB.Items.Add(student.Display());
             }
+
+            ResetSensitiveInfo();
         }
 
 
@@ -108,7 +110,7 @@ namespace Theme_34_Lesson_6_CRUD
                 {
                     studentsInfoLB.Items.Add(student.Display());
                 }
-                
+
                 ResetSensitiveInfo();
             }
 
@@ -134,17 +136,26 @@ namespace Theme_34_Lesson_6_CRUD
             {
                 if (currentNameTB.Text.Length > 0 && currentSurnameTB.Text.Length > 0 && currentAgeTB.Text.Length > 0)
                 {
-                    Student updatingStudent = new Student() { Id = _entityIndex, FirstName = currentNameTB.Text, LastName = currentSurnameTB.Text, Age = int.Parse(currentAgeTB.Text) };
+                    int newStudentAge = AgeValidation(currentAgeTB.Text);
 
-                    _operator.Update(updatingStudent);
+                    if (newStudentAge > 10 && newStudentAge < 46)
+                    {
+                        Student updatingStudent = new Student() { Id = _entityIndex, FirstName = currentNameTB.Text, LastName = currentSurnameTB.Text, Age = int.Parse(currentAgeTB.Text) };
 
-                    ReadAllStudents();
+                        _operator.Update(updatingStudent);
 
-                    ResetSensitiveInfo();
+                        ReadAllStudents();
 
-                    currentNameTB.Clear();
-                    currentSurnameTB.Clear();
-                    currentAgeTB.Clear();
+                        ResetSensitiveInfo();
+
+                        currentNameTB.Clear();
+                        currentSurnameTB.Clear();
+                        currentAgeTB.Clear();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Введен некорректный возраст! Пожалуйста, проверьте правильность информации.");
+                    }
                 }
                 else
                 {
@@ -184,7 +195,7 @@ namespace Theme_34_Lesson_6_CRUD
                     currentSurnameTB.Text = separateInfoData[2].Trim().Split(':')[1];
                     currentAgeTB.Text = separateInfoData[3].Trim().Split(':')[1];
                 }
-            }           
+            }
         }
 
         private void studentsInfoLB_SelectedIndexChanged(object sender, EventArgs e)
@@ -264,12 +275,36 @@ namespace Theme_34_Lesson_6_CRUD
         private int AgeValidation(string ageForValidate)
         {
             int studentAge;
-            bool validationResult =  int.TryParse(ageForValidate, out studentAge);
+            bool validationResult = int.TryParse(ageForValidate, out studentAge);
             if (validationResult == true)
             {
                 return studentAge;
             }
             return 0;
+        }
+
+
+        /// <summary>
+        /// Метод, создающий резервную копию БД в файле с расширением .csv
+        /// </summary>
+        private void CreateReserveDbCopy()
+        {
+            List<Student> students = _operator.Read();
+
+            if (students != null || students!.Count > 0)
+            {
+                CSVOperations.CreateFile(students);
+            }
+            else
+            {
+                MessageBox.Show("Не удалось создать резервную копию! Повторите попытку или проверьте наличие содержимого в БД.");
+            }
+        }
+
+
+        private void reserveCopyBTN_Click(object sender, EventArgs e)
+        {
+            CreateReserveDbCopy();
         }
     }
 }
