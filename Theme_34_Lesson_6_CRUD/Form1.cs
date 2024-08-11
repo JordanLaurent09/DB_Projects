@@ -20,13 +20,22 @@ namespace Theme_34_Lesson_6_CRUD
         {
             if (newNameTB.Text.Length > 0 && newSurnameTB.Text.Length > 0 && newAgeTB.Text.Length > 0)
             {
-                Student newStudent = new(newNameTB.Text, newSurnameTB.Text, int.Parse(newAgeTB.Text));
+                int studentAge = AgeValidation(newAgeTB.Text);
 
-                _operator.Add(newStudent);
+                if (studentAge > 10 && studentAge < 45)
+                {
+                    Student newStudent = new(newNameTB.Text, newSurnameTB.Text, studentAge);
 
-                newNameTB.Clear();
-                newSurnameTB.Clear();
-                newAgeTB.Clear();
+                    _operator.Add(newStudent);
+
+                    newNameTB.Clear();
+                    newSurnameTB.Clear();
+                    newAgeTB.Clear();
+                }
+                else
+                {
+                    MessageBox.Show("Возраст не проходит валидацию! Пожалуйста, проверьте правильность введенных данных.");
+                }
 
             }
             else
@@ -245,6 +254,22 @@ namespace Theme_34_Lesson_6_CRUD
             _entityFirstName = string.Empty;
             _entityLastName = string.Empty;
             _entityAge = string.Empty;
+        }
+
+        /// <summary>
+        /// Метод по валидации возраста студента
+        /// </summary>
+        /// <param name="ageForValidate"></param>
+        /// <returns></returns>
+        private int AgeValidation(string ageForValidate)
+        {
+            int studentAge;
+            bool validationResult =  int.TryParse(ageForValidate, out studentAge);
+            if (validationResult == true)
+            {
+                return studentAge;
+            }
+            return 0;
         }
     }
 }
