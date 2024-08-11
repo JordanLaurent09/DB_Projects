@@ -4,6 +4,9 @@ namespace Theme_34_Lesson_6_CRUD
     {
         private Operator _operator = new Operator();
         private int _entityIndex = 0;
+        private string _entityFirstName = string.Empty;
+        private string _entityLastName = string.Empty;
+        private string _entityAge = string.Empty;
         public Form1()
         {
             InitializeComponent();
@@ -21,9 +24,9 @@ namespace Theme_34_Lesson_6_CRUD
 
                 _operator.Add(newStudent);
 
-                newNameTB.Text = string.Empty;
-                newSurnameTB.Text = string.Empty;
-                newAgeTB.Text = string.Empty;
+                newNameTB.Clear();
+                newSurnameTB.Clear();
+                newAgeTB.Clear();
 
             }
             else
@@ -96,7 +99,8 @@ namespace Theme_34_Lesson_6_CRUD
                 {
                     studentsInfoLB.Items.Add(student.Display());
                 }
-
+                
+                ResetSensitiveInfo();
             }
 
             else
@@ -117,17 +121,26 @@ namespace Theme_34_Lesson_6_CRUD
         /// </summary>
         public void UpdateStudentData()
         {
-            if (currentNameTB.Text.Length > 0 && currentSurnameTB.Text.Length > 0 && currentAgeTB.Text.Length > 0)
+            if (allowUpdateChB.Checked == true)
             {
-                Student updatingStudent = new Student() { Id = _entityIndex, FirstName = currentNameTB.Text, LastName = currentSurnameTB.Text, Age = int.Parse(currentAgeTB.Text) };
+                if (currentNameTB.Text.Length > 0 && currentSurnameTB.Text.Length > 0 && currentAgeTB.Text.Length > 0)
+                {
+                    Student updatingStudent = new Student() { Id = _entityIndex, FirstName = currentNameTB.Text, LastName = currentSurnameTB.Text, Age = int.Parse(currentAgeTB.Text) };
 
-                _operator.Update(updatingStudent);
+                    _operator.Update(updatingStudent);
 
-                ReadAllStudents();
-            }
-            else
-            {
-                MessageBox.Show("Пожалуйста, заполните все поля.");
+                    ReadAllStudents();
+
+                    ResetSensitiveInfo();
+
+                    currentNameTB.Clear();
+                    currentSurnameTB.Clear();
+                    currentAgeTB.Clear();
+                }
+                else
+                {
+                    MessageBox.Show("Пожалуйста, заполните все поля.");
+                }
             }
         }
 
@@ -142,16 +155,27 @@ namespace Theme_34_Lesson_6_CRUD
         /// </summary>
         private void ChooseStudent()
         {
-            string chosenInfoLine = studentsInfoLB.SelectedItem!.ToString()!;
+            if (studentsInfoLB.SelectedIndex != -1)
+            {
+                string chosenInfoLine = studentsInfoLB.SelectedItem!.ToString()!;
 
+                string[] separateInfoData = chosenInfoLine.Split(';');
 
-            string[] separateInfoData = chosenInfoLine.Split(';');
+                _entityIndex = int.Parse(separateInfoData[0].Trim().Split(':')[1]);
 
-            _entityIndex = int.Parse(separateInfoData[0].Trim().Split(':')[1]);
+                _entityFirstName = separateInfoData[1].Trim().Split(':')[1];
 
-            currentNameTB.Text = separateInfoData[1].Trim().Split(':')[1];
-            currentSurnameTB.Text = separateInfoData[2].Trim().Split(':')[1];
-            currentAgeTB.Text = separateInfoData[3].Trim().Split(':')[1];
+                _entityLastName = separateInfoData[2].Trim().Split(':')[1];
+
+                _entityAge = separateInfoData[3].Trim().Split(':')[1];
+
+                if (allowUpdateChB.Checked == true)
+                {
+                    currentNameTB.Text = separateInfoData[1].Trim().Split(':')[1];
+                    currentSurnameTB.Text = separateInfoData[2].Trim().Split(':')[1];
+                    currentAgeTB.Text = separateInfoData[3].Trim().Split(':')[1];
+                }
+            }           
         }
 
         private void studentsInfoLB_SelectedIndexChanged(object sender, EventArgs e)
@@ -165,17 +189,19 @@ namespace Theme_34_Lesson_6_CRUD
         /// </summary>
         private void RemoveStudent()
         {
-            if (currentNameTB.Text.Length > 0 && currentSurnameTB.Text.Length > 0 && currentAgeTB.Text.Length > 0)
+            if (_entityFirstName.Length > 0 && _entityLastName.Length > 0 && _entityAge.Length > 0)
             {
-                Student updatingStudent = new Student() { Id = _entityIndex, FirstName = currentNameTB.Text, LastName = currentSurnameTB.Text, Age = int.Parse(currentAgeTB.Text) };
+                Student updatingStudent = new Student() { Id = _entityIndex, FirstName = _entityFirstName, LastName = _entityLastName, Age = int.Parse(_entityAge) };
 
                 _operator.Delete(updatingStudent);
 
                 ReadAllStudents();
+
+                ResetSensitiveInfo();
             }
             else
             {
-                MessageBox.Show("Пожалуйста, заполните все поля.");
+                MessageBox.Show("Пожалуйста, выберите студента из списка.");
             }
         }
 
@@ -183,6 +209,42 @@ namespace Theme_34_Lesson_6_CRUD
         private void removeStudentBTN_Click(object sender, EventArgs e)
         {
             RemoveStudent();
+        }
+
+
+        /// <summary>
+        /// Метод по разрешению/запрету редактирования информации о студенте
+        /// </summary>
+        private void ChangeUpdateState()
+        {
+            if (allowUpdateChB.Checked == true)
+            {
+                currentNameTB.Text = _entityFirstName;
+                currentSurnameTB.Text = _entityLastName;
+                currentAgeTB.Text = _entityAge;
+            }
+            else
+            {
+                currentNameTB.Clear();
+                currentSurnameTB.Clear();
+                currentAgeTB.Clear();
+            }
+        }
+
+        private void allowUpdateChB_CheckedChanged(object sender, EventArgs e)
+        {
+            ChangeUpdateState();
+        }
+
+
+        /// <summary>
+        /// Сброс чувствительной информации о студенте при необходимости
+        /// </summary>
+        private void ResetSensitiveInfo()
+        {
+            _entityFirstName = string.Empty;
+            _entityLastName = string.Empty;
+            _entityAge = string.Empty;
         }
     }
 }

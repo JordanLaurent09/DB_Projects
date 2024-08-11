@@ -56,6 +56,7 @@
             label12 = new Label();
             label13 = new Label();
             removeStudentBTN = new Button();
+            allowUpdateChB = new CheckBox();
             SuspendLayout();
             // 
             // newNameTB
@@ -307,11 +308,23 @@
             removeStudentBTN.UseVisualStyleBackColor = true;
             removeStudentBTN.Click += removeStudentBTN_Click;
             // 
+            // allowUpdateChB
+            // 
+            allowUpdateChB.AutoSize = true;
+            allowUpdateChB.Location = new Point(1130, 140);
+            allowUpdateChB.Name = "allowUpdateChB";
+            allowUpdateChB.Size = new Size(149, 19);
+            allowUpdateChB.TabIndex = 28;
+            allowUpdateChB.Text = "Разрешить изменение";
+            allowUpdateChB.UseVisualStyleBackColor = true;
+            allowUpdateChB.CheckedChanged += allowUpdateChB_CheckedChanged;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1426, 809);
+            Controls.Add(allowUpdateChB);
             Controls.Add(removeStudentBTN);
             Controls.Add(label13);
             Controls.Add(label12);
@@ -376,5 +389,6 @@
         private Label label12;
         private Label label13;
         private Button removeStudentBTN;
+        private CheckBox allowUpdateChB;
     }
 }
