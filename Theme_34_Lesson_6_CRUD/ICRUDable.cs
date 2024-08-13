@@ -8,10 +8,10 @@ namespace Theme_34_Lesson_6_CRUD
 {
     public interface ICRUDable
     {
-        public void Add(Student newStudent);
-        public List<Student> Read();
-        public List<Student> Find(string searchText, string searchOption);
-        public void Update(Student student);
-        public void Delete(Student student);
+        Task Add(Student newStudent);
+        Task<List<Student>> Read();
+        Task<List<Student>> Find(string searchText, string searchOption);
+        Task Update(Student student);
+        Task Delete(Student student);
     }
 }

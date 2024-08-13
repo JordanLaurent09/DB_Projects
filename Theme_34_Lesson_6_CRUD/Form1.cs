@@ -16,7 +16,7 @@ namespace Theme_34_Lesson_6_CRUD
         /// <summary>
         /// Метод по добавлению нового студента в БД
         /// </summary>
-        private void AddNewStudent()
+        private async void AddNewStudent()
         {
             if (newNameTB.Text.Length > 0 && newSurnameTB.Text.Length > 0 && newAgeTB.Text.Length > 0)
             {
@@ -26,7 +26,7 @@ namespace Theme_34_Lesson_6_CRUD
                 {
                     Student newStudent = new(newNameTB.Text, newSurnameTB.Text, studentAge);
 
-                    _operator.Add(newStudent);
+                    await _operator.Add(newStudent);
 
                     newNameTB.Clear();
                     newSurnameTB.Clear();
@@ -51,11 +51,11 @@ namespace Theme_34_Lesson_6_CRUD
         /// <summary>
         /// Метод по чтению всех студентов из БД
         /// </summary>
-        private void ReadAllStudents()
+        private async void ReadAllStudents()
         {
             studentsInfoLB.Items.Clear();
 
-            List<Student> students = _operator.Read();
+            List<Student> students = await _operator.Read();
 
             foreach (Student student in students)
             {
@@ -75,7 +75,7 @@ namespace Theme_34_Lesson_6_CRUD
         /// <summary>
         /// Метод по поиску конкретного студента по имени/фамилии
         /// </summary>
-        private void SearchStudents()
+        private async void SearchStudents()
         {
             if (searchTB.Text.Length > 0)
             {
@@ -96,7 +96,7 @@ namespace Theme_34_Lesson_6_CRUD
                     return;
                 }
 
-                List<Student> students = _operator.Find(searchTB.Text, searchProperty);
+                List<Student> students = await _operator.Find(searchTB.Text, searchProperty);
 
                 if (students.Count == 0)
                 {
@@ -130,7 +130,7 @@ namespace Theme_34_Lesson_6_CRUD
         /// <summary>
         /// Метод по изменению данных конкретного студента
         /// </summary>
-        public void UpdateStudentData()
+        public async void UpdateStudentData()
         {
             if (allowUpdateChB.Checked == true)
             {
@@ -140,9 +140,9 @@ namespace Theme_34_Lesson_6_CRUD
 
                     if (newStudentAge > 10 && newStudentAge < 46)
                     {
-                        Student updatingStudent = new Student() { Id = _entityIndex, FirstName = currentNameTB.Text, LastName = currentSurnameTB.Text, Age = int.Parse(currentAgeTB.Text) };
+                        Student updatingStudent = new Student() { Id = _entityIndex, FirstName = currentNameTB.Text.Trim(), LastName = currentSurnameTB.Text.Trim(), Age = int.Parse(currentAgeTB.Text) };
 
-                        _operator.Update(updatingStudent);
+                        await _operator.Update(updatingStudent);
 
                         ReadAllStudents();
 
@@ -207,13 +207,13 @@ namespace Theme_34_Lesson_6_CRUD
         /// <summary>
         /// Начальный метод по удалению выбранного пользователя
         /// </summary>
-        private void RemoveStudent()
+        private async void RemoveStudent()
         {
             if (_entityFirstName.Length > 0 && _entityLastName.Length > 0 && _entityAge.Length > 0)
             {
                 Student updatingStudent = new Student() { Id = _entityIndex, FirstName = _entityFirstName, LastName = _entityLastName, Age = int.Parse(_entityAge) };
 
-                _operator.Delete(updatingStudent);
+                await _operator.Delete(updatingStudent);
 
                 ReadAllStudents();
 
@@ -287,9 +287,9 @@ namespace Theme_34_Lesson_6_CRUD
         /// <summary>
         /// Метод, создающий резервную копию БД в файле с расширением .csv
         /// </summary>
-        private void CreateReserveDbCopy()
+        private async void CreateReserveDbCopy()
         {
-            List<Student> students = _operator.Read();
+            List<Student> students = await _operator.Read();
 
             if (students != null || students!.Count > 0)
             {

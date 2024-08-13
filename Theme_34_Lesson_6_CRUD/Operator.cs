@@ -12,12 +12,12 @@ namespace Theme_34_Lesson_6_CRUD
         /// Adding new student to DB
         /// </summary>
         /// <param name="newStudent"></param>
-        public void Add(Student newStudent)
+        public async Task Add(Student newStudent)
         {
             using (SchoolDbContext schoolContext = new SchoolDbContext())
             {
-                schoolContext.Students.Add(newStudent);
-                schoolContext.SaveChanges();
+                await schoolContext.Students.AddAsync(newStudent);
+                await schoolContext.SaveChangesAsync();
             }
         }
 
@@ -25,16 +25,17 @@ namespace Theme_34_Lesson_6_CRUD
         /// Reading all info about students from database
         /// </summary>
         /// <returns></returns>
-        public List<Student> Read()
+        public async Task<List<Student>> Read()
         {
-            List<Student> allStudents = new List<Student>();
+            //List<Student> allStudents = new List<Student>();
 
             using (SchoolDbContext schoolDbContext = new SchoolDbContext())
             {
-                allStudents = schoolDbContext.Students.ToList();
+                return await Task.Run(() => schoolDbContext.Students.ToList());
+                //allStudents = schoolDbContext.Students.ToList();
             }
 
-            return allStudents;
+            //return allStudents;
         }
 
         /// <summary>
@@ -43,37 +44,41 @@ namespace Theme_34_Lesson_6_CRUD
         /// <param name="searchText"></param>
         /// <param name="searchOption"></param>
         /// <returns></returns>
-        public List<Student> Find(string searchText, string searchOption)
+        public async Task<List<Student>> Find(string searchText, string searchOption)
         {
-            List<Student> foundStudents = new List<Student>();
+            //List<Student> foundStudents = new List<Student>();
 
             using (SchoolDbContext schoolContext = new SchoolDbContext())
             {
                 switch (searchOption) 
                 {
                     case "name":
-                        foundStudents = schoolContext.Students.Where(user => user.FirstName == searchText).ToList();
-                        break;
+                        return await Task.Run(() => schoolContext.Students.Where(user => user.FirstName == searchText).ToList());
+                        //foundStudents = schoolContext.Students.Where(user => user.FirstName == searchText).ToList();
+                        //break;
                     case "surname":
-                        foundStudents = schoolContext.Students.Where(user => user.LastName == searchText).ToList();
-                        break;
+                        return await Task.Run(() => schoolContext.Students.Where(user => user.LastName == searchText).ToList());
+                    //foundStudents = schoolContext.Students.Where(user => user.LastName == searchText).ToList();
+                    //break;
+                    default:
+                        return null!;
                 }
             }
-            return foundStudents;
+            //return foundStudents;
         }
 
         /// <summary>
         /// Method for update student info
         /// </summary>
         /// <param name="student"></param>
-        public void Update(Student student)
+        public async Task Update(Student student)
         {
             using (SchoolDbContext schoolContext = new SchoolDbContext())
             {
                 if (student != null)
                 {
                     schoolContext.Students.Update(student);
-                    schoolContext.SaveChanges();
+                    await schoolContext.SaveChangesAsync();
                 }
                 else
                 {
@@ -87,14 +92,14 @@ namespace Theme_34_Lesson_6_CRUD
         /// Method allowing to remove students from database
         /// </summary>
         /// <param name="student"></param>
-        public void Delete(Student student)
+        public async Task Delete(Student student)
         {
             using (SchoolDbContext schoolContext = new SchoolDbContext())
             {
                 if (student != null)
                 {
                     schoolContext.Students.Remove(student);
-                    schoolContext.SaveChanges();
+                    await schoolContext.SaveChangesAsync();
                 }
                 else
                 {
